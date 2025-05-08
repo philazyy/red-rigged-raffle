@@ -51,7 +51,7 @@ Führen Sie den Testfall folgendermassen aus:
 
 Versuchen Sie den Fehler durch eine Analyse des Programmcodes nachzuvollziehen.
 Korrigieren Sie anschliessend den Fehler, bis der Unittest erfolgreich
-durchläuft. 
+durchläuft.
 
 ![Das Warten hat sich gelohnt!](pics/3.png)
 
