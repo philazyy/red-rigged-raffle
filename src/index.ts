@@ -76,10 +76,9 @@ export class Verlosung {
     ];
     const luckyMuckies = new AbsneakenderHase(
       redArmy,
-      fiktivePreise,
+      fiktivePreise
     ).absneaken();
-    for (const opfer of luckyMuckies.keys()) {
-      const gewonnenerHase = luckyMuckies[opfer];
+    for (const [opfer, gewonnenerHase] of luckyMuckies.entries()) {
       console.log(`${opfer} gewinnt ${gewonnenerHase}`);
     }
   }
