@@ -4,8 +4,8 @@
 //   \ V /  __/ |  | | (_) \__ \ |_| | | | | (_| |
 //    \_/ \___|_|  |_|\___/|___/\__,_|_| |_|\__, |
 
-import { AbsneakenderHase } from "./absneakender-hase";
-import { GewinnbarerHase } from "./gewinnbarer-hase";
+import { AbsneakenderHase } from "./absneakender-hase.js";
+import { GewinnbarerHase } from "./gewinnbarer-hase.js";
 
 //
 export class Verlosung {
@@ -76,10 +76,12 @@ export class Verlosung {
     ];
     const luckyMuckies = new AbsneakenderHase(
       redArmy,
-      fiktivePreise
+      fiktivePreise,
     ).absneaken();
     for (const [opfer, gewonnenerHase] of luckyMuckies.entries()) {
       console.log(`${opfer} gewinnt ${gewonnenerHase}`);
     }
   }
 }
+
+new Verlosung().main();

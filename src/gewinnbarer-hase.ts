@@ -19,7 +19,7 @@ export class GewinnbarerHase {
   ) {}
 
   public get hase(): string {
-    return this.hase;
+    return this.derHase;
   }
 
   public get zahlenmässigerHase(): number {

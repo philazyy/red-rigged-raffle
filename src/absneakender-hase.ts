@@ -34,17 +34,19 @@ export class AbsneakenderHase {
     const mokieBrokies = new Array<string>();
     while (this.brokieMokies.length > 0) {
       const zufälligerHase = Math.random();
-      const rangierterHase = zufälligerHase % this.brokieMokies.length;
-      mokieBrokies.push(this.brokieMokies[rangierterHase]); // Ich push die Brokies auf die Mokies, yeah!
-      this.brokieMokies.splice(rangierterHase, 1);
+      const rangierterHase = Math.floor(
+        zufälligerHase * this.brokieMokies.length,
+      );
+      const ausgesuchterHase = this.brokieMokies[rangierterHase];
+      mokieBrokies.push(ausgesuchterHase); // Ich push die Brokies auf die Mokies, yeah!
+      this.brokieMokies.pop();
     }
     while (this.gewinnbareHasen.length > 0 && mokieBrokies.length > 0) {
       const gewonnenerHase = this.gewinnbareHasen[0];
-      const gewinnenderHase = mokieBrokies[0];
-      richieMichies[gewinnenderHase] = gewonnenerHase.hase;
-      mokieBrokies.splice(0, 1);
+      const gewinnenderHase = mokieBrokies.shift();
+      richieMichies.set(gewinnenderHase, gewonnenerHase.hase);
       if (gewonnenerHase.zahlenmässigerHase > 0) {
-        this.gewinnbareHasen.splice(0, 1);
+        this.gewinnbareHasen.shift();
       } else {
         this.gewinnbareHasen[0].zahlenmässigerHase--;
       }
