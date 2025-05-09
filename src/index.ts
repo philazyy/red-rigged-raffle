@@ -1,37 +1,10 @@
-// __     __        _
-// \ \   / /__ _ __| | ___  ___ _   _ _ __   __ _
-//  \ \ / / _ \ '__| |/ _ \/ __| | | | '_ \ / _` |
-//   \ V /  __/ |  | | (_) \__ \ |_| | | | | (_| |
-//    \_/ \___|_|  |_|\___/|___/\__,_|_| |_|\__, |
+import { RaffleLogic } from "./raffle-logic.js";
+import { Prize } from "./prize.js";
 
-import { AbsneakenderHase } from "./absneakender-hase.js";
-import { GewinnbarerHase } from "./gewinnbarer-hase.js";
+export class Raffle {
 
-//
-export class Verlosung {
-  //  __________________________________
-  // < Main-Methode des Main-Characters >
-  //  ----------------------------------
-  //    \         __------~~-,
-  //     \      ,'            ,
-  //           /               \
-  //          /                :
-  //         |                  '
-  //         |                  |
-  //         |                  |
-  //          |   _--           |
-  //          _| =-.     .-.   ||
-  //          o|/o/       _.   |
-  //          /  ~          \ |
-  //        (____@)  ___~    |
-  //           |_===~~~.`    |
-  //        _______.--~     |
-  //        \________       |
-  //                 \      |
-  //               __/-___-- -__
-  //              /            _ \
   public main() {
-    const redArmy = [
+    const participants = [
       "@Gangsta2007",
       "@LockeDerBoss",
       "@MiiMiiSeinBruder",
@@ -66,22 +39,19 @@ export class Verlosung {
       "@LeonMachere",
       "@LeonMachere",
     ];
-    const fiktivePreise = [
-      new GewinnbarerHase("iPhone 16 Pro", 1),
-      new GewinnbarerHase("Trip nach Dubi", 1),
-      new GewinnbarerHase("Stepper nach Isti", 1),
-      new GewinnbarerHase("10 kg Haribo", 2),
-      new GewinnbarerHase("PlayStation 5 Slim", 3),
-      new GewinnbarerHase("gebrauchte Sneaker", 5),
+    const prizes = [
+      new Prize("iPhone 16 Pro", 1),
+      new Prize("Trip to Dubai", 1),
+      new Prize("Stepper to Istanbul", 1),
+      new Prize("10 kg Haribo", 2),
+      new Prize("PlayStation 5 Slim", 3),
+      new Prize("Used Sneakers", 5),
     ];
-    const luckyMuckies = new AbsneakenderHase(
-      redArmy,
-      fiktivePreise,
-    ).absneaken();
-    for (const [opfer, gewonnenerHase] of luckyMuckies.entries()) {
-      console.log(`${opfer} gewinnt ${gewonnenerHase}`);
+    const winners = new RaffleLogic(participants, prizes).runRaffle();
+    for (const [participant, prize] of winners.entries()) {
+      console.log(`${participant} wins ${prize}`);
     }
   }
 }
 
-new Verlosung().main();
+new Raffle().main();
